@@ -1,0 +1,18 @@
+<google-map
+  class="center"
+  height="600px"
+  width="70%"
+  [zoom]="14"
+  [center]="center">
+
+  <map-marker
+    #markerElem
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [options]="{draggable: marker.draggable, icon: marker.iconUrl}"
+    (mapDragend)="dragEnd($event)"
+    >
+  </map-marker>
+
+</google-map>
+

@@ -1,0 +1,9 @@
+<h1>Įveskite mašinos nr.</h1>
+
+<form #form (submit)="navigateToLocation()" class="d-flex">
+  <input placeholder="Mašinos nr."
+         type="text" name="title" required>
+  <button [disabled]="form.invalid" type="submit" class="green">Toliau</button>
+</form>
+
+<h5><a href="#">Reikia pagalbos?</a></h5>

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "part3": {
+    "agmis-task": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/part3",
+            "outputPath": "dist/agmis-task",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "part3:build"
+            "browserTarget": "agmis-task:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "part3:build:production"
+              "browserTarget": "agmis-task:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "part3:build"
+            "browserTarget": "agmis-task:build"
           }
         },
         "test": {
@@ -110,15 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "part3:serve"
+            "devServerTarget": "agmis-task:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "part3:serve:production"
+              "devServerTarget": "agmis-task:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "part3"
+  "defaultProject": "agmis-task"
 }

@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+ h1, h2, h3, h4, h5 {
+   font-weight: 400;
+   text-align: center;
+   margin-bottom: 2em;
+ }
+
+p {
+ text-align: center;
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+button {
+  padding: 0.8em 0.5em;
+  width: 7em;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:not(.blue) {
+  margin: 0 auto;
+  display: block;
+}
+
+input {
+  width: 20%;
+  min-width: 200px;
+  padding: 0.5em;
+  margin-bottom: 2em;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.green {
+  background-color: #59b957;
+}
+.blue {
+  background-color: #3d8ace;
+}
+
+.map-container {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+.w70 {
+  width: 70%;
+  margin: 0 auto;
+  display: block;
+}

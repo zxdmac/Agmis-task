@@ -18,7 +18,7 @@ export class PickLocationComponent implements OnInit {
     this.map.destroyAllMarkers();
 
     this.geo.addUserMarker().subscribe(_ => {
-      this.map.updateServiceCenter(this.map.getMarkers()[0].position);
+      this.map.updateCenter(this.map.getMarkers()[0].position);
     });
   }
 }

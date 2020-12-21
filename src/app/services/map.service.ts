@@ -27,22 +27,23 @@ export class MapService {
   routeCoordinateIndex = 0;
   duration = 0;
 
-  private serviceCenter: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(null);
-  public serviceCenter$: Observable<any[]> = this.serviceCenter.asObservable();
+  private centerObs: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(null);
+  public centerObs$: Observable<any[]> = this.centerObs.asObservable();
 
-  private observableDuration: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(null);
-  public observableDuration$: Observable<any[]> = this.observableDuration.asObservable();
+  private durationObs: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(null);
+  public durationObs$: Observable<any[]> = this.durationObs.asObservable();
 
   constructor(
     private calc: CalcService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
-  updateServiceCenter(updatedCenter): void {
-    this.serviceCenter.next(updatedCenter);
+  updateCenter(updatedCenter): void {
+    this.centerObs.next(updatedCenter);
   }
 
-  updateObservableDuration(updatedDuration): void {
-    this.observableDuration.next(updatedDuration);
+  updateDuration(updatedDuration): void {
+    this.durationObs.next(updatedDuration);
   }
 
   moveMarker(): void {
@@ -57,7 +58,7 @@ export class MapService {
     }, 1000);
   }
 
-  addMarkerToMarkers(latLngLit): void {
+  addMarkerToArr(latLngLit): void {
     this.markers.push(latLngLit);
   }
 
@@ -69,15 +70,11 @@ export class MapService {
     this.markers[index][prop] = value;
   }
 
-  updateDraggable(index, boolVal): void {
-    this.markers[index].draggable = boolVal;
-  }
-
   destroyAllMarkers(): void {
     this.markers = [];
   }
 
-  twoCoordinatesCenter(markers): Position {
+  calculateTwoCoordinatesCenter(markers): Position {
     const latCenter = (markers[0].position.lat + markers[1].position.lat) / 2;
     const lngCenter = (markers[0].position.lng + markers[1].position.lng) / 2;
     return { lat: latCenter, lng: lngCenter };
@@ -128,23 +125,23 @@ export class MapService {
 
   extractDuration(response): void {
     this.duration = response.routes[0].legs[0].duration.value;
-    this.updateObservableDuration(this.duration);
+    this.updateDuration(this.duration);
   }
 
   setCarCoord(): void {
     const userCoordinates = this.getMarkers()[0];
     this.carCoord = this.calc.randomCarCoordinates(userCoordinates);
-    this.addMarkerToMarkers({
+    this.addMarkerToArr({
       position: this.carCoord,
       draggable: false,
       iconUrl: '../assets/help.png'
     });
-    this.updateDraggable(0, false);
+    this.updateMarker(0, 'draggable', false);
   }
 
   setCenterBetweenTwoMarkers(): void {
-    const center = this.twoCoordinatesCenter(this.getMarkers());
-    this.updateServiceCenter(center);
+    const center = this.calculateTwoCoordinatesCenter(this.getMarkers());
+    this.updateCenter(center);
   }
 
 }

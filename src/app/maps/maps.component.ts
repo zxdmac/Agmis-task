@@ -17,7 +17,7 @@ export class MapsComponent implements OnInit {
   ngOnInit(): void {
     this.markers = this.map.getMarkers();
 
-    this.map.serviceCenter$
+    this.map.centerObs$
       .subscribe(serviceCenter => {
         this.center = serviceCenter;
       });

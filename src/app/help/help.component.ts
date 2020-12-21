@@ -18,7 +18,7 @@ export class HelpComponent implements OnInit {
 
   ngOnInit(): void {
     this.time = '';
-    this.map.observableDuration$
+    this.map.durationObs$
       .subscribe(duration => {
         this.time = this.calc.formatTime(duration);
       });

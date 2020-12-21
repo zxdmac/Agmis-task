@@ -34,7 +34,7 @@ export class GeolocationService {
           draggable: true,
           iconUrl: ''
         };
-        obs.next(this.map.addMarkerToMarkers(marker));
+        obs.next(this.map.addMarkerToArr(marker));
       });
     });
   }
